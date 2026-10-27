@@ -17,7 +17,6 @@ export interface HeroCarouselItem {
   title: string
   image: string
   credit?: string
-  meta?: string[]
   accent?: string
 }
 
@@ -26,9 +25,6 @@ export interface HeroCarouselProps {
   index?: number
   defaultIndex?: number
   onIndexChange?: (index: number) => void
-  brand?: React.ReactNode
-  onBack?: () => void
-  onMenu?: () => void
   autoplay?: boolean
   autoplayDelay?: number
   className?: string
@@ -45,9 +41,6 @@ export function HeroCarousel({
   index: controlled,
   defaultIndex = 0,
   onIndexChange,
-  brand,
-  onBack,
-  onMenu,
   autoplay = false,
   autoplayDelay = 4000,
   className,
@@ -81,12 +74,11 @@ export function HeroCarousel({
     return () => observer.disconnect()
   }, [items.length])
 
-  const fullH = clamp(box.h * 0.42, 148, 228)
+  const fullH = clamp(box.h * 0.65, 148, 228)
   const halfH = fullH / 2
   const cardW = fullH * 0.75
   const gap = Math.max(10, Math.round(cardW * 0.065))
   const step = cardW + gap
-  const pad = clamp(box.w * 0.035, 24, 52)
   const xFor = React.useCallback(
     (i: number) => box.w / 2 - (i * step + cardW / 2),
     [box.w, step, cardW],
@@ -197,37 +189,7 @@ export function HeroCarousel({
         style={{ backgroundImage: GRAIN, backgroundSize: "180px 180px" }}
       />
 
-      <div className="hero-topline" style={{ left: pad, right: pad }}>
-        <span className="eyebrow">{brand ?? "В фокусе"}</span>
-        <div className="hero-controls">
-          {onBack && <button type="button" onClick={onBack}>Назад</button>}
-          {onMenu && <button type="button" onClick={onMenu}>Меню</button>}
-          <button type="button" className="arrow-button" aria-label="Предыдущая рубрика" onClick={() => go(index - 1)} disabled={index === 0}>
-            <span aria-hidden="true">←</span>
-          </button>
-          <button type="button" className="arrow-button" aria-label="Следующая рубрика" onClick={() => go(index + 1)} disabled={index === last}>
-            <span aria-hidden="true">→</span>
-          </button>
-        </div>
-      </div>
-
-      <div className="hero-heading" style={{ left: pad, right: pad }}>
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={active.id ?? index}
-            initial={{ opacity: 0, y: reduced ? 0 : 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: reduced ? 0 : -6 }}
-            transition={{ duration: reduced ? 0 : 0.18 }}
-          >
-            <h2>{active.title.split("\n").map((line, i) => <span className="block" key={i}>{line}</span>)}</h2>
-            {active.credit && <p>{active.credit}</p>}
-          </motion.div>
-        </AnimatePresence>
-        {active.meta?.length ? <div className="hero-meta">{active.meta.map((fact) => <span key={fact}>{fact}</span>)}</div> : null}
-      </div>
-
-      <div className="absolute inset-x-0" style={{ top: "46%", height: fullH + 32 }}>
+      <div className="absolute inset-x-0" style={{ top: "50%", marginTop: -(fullH + 32) / 2, height: fullH + 32 }}>
         <motion.div
           className="flex items-start"
           style={{ gap, x, cursor: dragging ? "grabbing" : "grab", touchAction: "pan-y" }}
@@ -268,29 +230,12 @@ export function HeroCarousel({
                 <img src={item.image} alt="" draggable={false} className="h-full w-full object-cover" style={{ objectPosition: "50% 40%" }} />
                 <motion.span aria-hidden="true" className="absolute inset-0 bg-white" animate={{ opacity: itemIndex === index ? 0 : 0.22 }} transition={spring} />
               </motion.div>
-              <span className="film-card-label">{item.title.replace(/\n/g, " ")}{itemIndex === index && <span aria-hidden="true">↗</span>}</span>
+              <span className="film-card-label">{item.title.replace(/\n/g, " ")}</span>
             </button>
           ))}
         </motion.div>
       </div>
 
-      <div className="hero-bottomline" style={{ left: pad, right: pad }}>
-        <div className="hero-progress">
-          <div className="flex justify-between font-mono text-[11px] tabular-nums">
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <span>{String(items.length).padStart(2, "0")}</span>
-          </div>
-          <div className="relative mt-2 h-px bg-black/15">
-            <motion.div
-              className="absolute inset-y-0 bg-current"
-              style={{ width: `${100 / items.length}%` }}
-              animate={{ left: `${(index / items.length) * 100}%` }}
-              transition={spring}
-            />
-          </div>
-        </div>
-        <span className="hero-interaction-hint">Выберите тему для своей ленты <span aria-hidden="true">↗</span></span>
-      </div>
     </div>
   )
 }

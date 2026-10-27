@@ -7,7 +7,6 @@ export const categories: HeroCarouselItem[] = [
     title: "Все новости",
     image: "/images/overview.jpg",
     credit: "Главное — в одной ленте",
-    meta: ["Пять рубрик", "Единая повестка"],
     accent: "#dbe1d7",
   },
   {
@@ -15,7 +14,6 @@ export const categories: HeroCarouselItem[] = [
     title: "Экономика",
     image: "/images/economy.jpg",
     credit: "Рынки, показатели и тенденции",
-    meta: ["Деньги", "Котировки"],
     accent: "#dce5d5",
   },
   {
@@ -23,7 +21,6 @@ export const categories: HeroCarouselItem[] = [
     title: "Политика",
     image: "/images/politics.jpg",
     credit: "Решения и международная повестка",
-    meta: ["Страны", "События"],
     accent: "#dbe3ec",
   },
   {
@@ -31,7 +28,6 @@ export const categories: HeroCarouselItem[] = [
     title: "Финансы",
     image: "/images/finance.jpg",
     credit: "Банки, инвестиции и финансовая система",
-    meta: ["Капитал", "Инвестиции"],
     accent: "#e8e0ce",
   },
   {
@@ -39,7 +35,6 @@ export const categories: HeroCarouselItem[] = [
     title: "Технологии",
     image: "/images/technology.jpg",
     credit: "Идеи, которые меняют привычное",
-    meta: ["Инновации", "Цифровая среда"],
     accent: "#dfe1ed",
   },
   {
@@ -47,7 +42,6 @@ export const categories: HeroCarouselItem[] = [
     title: "Прочее",
     image: "/images/other.jpg",
     credit: "За пределами основных рубрик",
-    meta: ["Общество", "Кругозор"],
     accent: "#e9dfd6",
   },
 ]
