@@ -16,14 +16,12 @@ export function NewsPage() {
           key={category.id}
           aria-hidden="true"
           className="page-background"
-          style={{ backgroundColor: category.accent }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: reduced ? 0 : 0.55 }}
         >
           <div className="page-background-photo" style={{ backgroundImage: `url("${category.image}")` }} />
-          <div className="page-background-wash" />
         </motion.div>
       </AnimatePresence>
       <a href="#news-feed" className="skip-link">Перейти к ленте новостей</a>
