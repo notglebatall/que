@@ -13,32 +13,12 @@ export function NewsPage() {
 
       <header className="site-header page-width">
         <a className="wordmark" href="/" aria-label="QUE — главная страница">QUE<span aria-hidden="true">.</span></a>
-        <span className="site-description">Новостной портал</span>
         <span className="prototype-badge">Прототип интерфейса</span>
       </header>
 
       <main className="page-width">
-        <section className="rubrics-section" aria-labelledby="rubrics-heading">
-          <div className="rubrics-toolbar">
-            <h1 id="rubrics-heading" className="eyebrow">Обзор рубрик</h1>
-            <span className="rubrics-hint">Разные темы. Общая картина.</span>
-          </div>
-
-          <nav className="category-nav" aria-label="Выбор рубрики">
-            {categories.map((item, itemIndex) => (
-              <button
-                key={item.id}
-                type="button"
-                aria-pressed={index === itemIndex}
-                aria-controls="news-feed"
-                onClick={() => setIndex(itemIndex)}
-                className="category-button"
-              >
-                {item.title}
-              </button>
-            ))}
-          </nav>
-
+        <h1 className="sr-only">Новости</h1>
+        <section className="rubrics-section" aria-label="Выбор рубрики">
           <HeroCarousel
             items={categories}
             index={index}
@@ -72,7 +52,7 @@ export function NewsPage() {
       </main>
 
       <footer className="site-footer page-width">
-        <span>QUE · Новостной портал</span>
+        <span>QUE</span>
         <span>Изображения рубрик — демонстрационные</span>
       </footer>
     </>

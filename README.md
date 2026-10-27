@@ -77,9 +77,18 @@ docker compose down
 
 ## Развёртывание на сервере
 
-Из каталога проекта на сервере:
+Исходники стенда хранятся в Git: https://github.com/notglebatall/que, ветка `main`.
+При первом развёртывании:
 
 ```bash
+git clone --branch main https://github.com/notglebatall/que.git que
+cd que
+```
+
+Обновление и пересборка из каталога проекта на сервере:
+
+```bash
+git pull --ff-only origin main
 docker compose -f compose.deploy.yaml up -d --build --wait
 docker compose -f compose.deploy.yaml ps
 docker compose -f compose.deploy.yaml logs --tail=50 frontend

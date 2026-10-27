@@ -18,6 +18,7 @@ QUE — новостной портал для сотрудников Центр
 - Проверка TypeScript и сборка: `docker compose run --rm --no-deps frontend npm run build`.
 - Только проверка TypeScript: `docker compose run --rm --no-deps frontend npm run typecheck`.
 - Серверная сборка и запуск: `docker compose -f compose.deploy.yaml up -d --build --wait`; nginx отдаёт собранный frontend на порту `QUE_HTTP_PORT` (по умолчанию 8080), с healthcheck и автоматическим перезапуском.
+- Изменения сохраняются в `main`. Стенд `/home/ganbei/que` обновляется из `https://github.com/notglebatall/que.git` через `git pull --ff-only origin main`, затем пересобирается Docker Compose. Не копируйте исходники на стенд вне Git.
 - При наличии локального Node.js: команды `npm ci`, `npm run dev`, `npm run build` выполняются из `frontend/`.
 - Backend и db пока содержат только заготовки; их стек и технологии не выбраны.
 - Текущий UI — светлая схема главной: HeroCarousel сверху, пять рубрик (Экономика, Политика, Финансы, Технологии, Прочее), отдельное начальное состояние «Все новости» и область вертикальной ленты. Карточки новостей и дополнительные функции пока не разрабатываются.

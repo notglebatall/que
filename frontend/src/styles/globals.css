@@ -73,16 +73,9 @@ button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
 .site-header { display: flex; align-items: center; gap: 26px; min-height: 100px; border-bottom: 1px solid var(--border); }
 .wordmark { font-size: 38px; font-weight: 750; letter-spacing: -3px; line-height: 1; }
 .wordmark > span { color: #6b7f5c; }
-.site-description { border-left: 1px solid #cdd1c7; padding-left: 26px; font-size: 13px; color: #59625a; }
 .prototype-badge { margin-left: auto; font-size: 11px; letter-spacing: 0.02em; color: #646b65; padding: 7px 11px; border: 1px solid var(--border); border-radius: 5px; }
 .rubrics-section { padding-top: 30px; }
-.rubrics-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .eyebrow { margin: 0; font-size: 10px; font-weight: 650; letter-spacing: 0.15em; text-transform: uppercase; }
-.rubrics-hint { font-size: 12px; color: #6b726c; }
-.category-nav { display: flex; gap: 7px; overflow-x: auto; margin-block: 20px 18px; padding: 4px 2px 7px; scrollbar-width: thin; }
-.category-button { flex-shrink: 0; padding: 10px 19px; border: 1px solid transparent; border-radius: 6px; font-size: 13px; font-weight: 500; white-space: nowrap; color: #5c645d; transition: background 160ms, color 160ms, border-color 160ms; }
-.category-button:hover { background: #eeefe9; color: #252c28; }
-.category-button[aria-pressed="true"] { background: #303d32; color: white; border-color: #303d32; }
 .hero-carousel { background: #e9ece4; border: 1px solid #e0e3d9; border-radius: 9px; }
 .category-hero { height: 460px; }
 .hero-wash { background: linear-gradient(100deg, rgb(246 247 241 / 88%) 0%, rgb(246 247 241 / 50%) 60%, rgb(246 247 241 / 38%) 100%); }
@@ -131,7 +124,6 @@ button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
   .page-width { width: calc(100% - 48px); }
   .site-header { min-height: 84px; }
   .hero-meta { display: none; }
-  .category-button { padding-inline: 15px; }
   .category-hero { height: 430px; }
 }
 
@@ -139,12 +131,8 @@ button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
   .page-width { width: calc(100% - 32px); }
   .site-header { min-height: 76px; gap: 15px; }
   .wordmark { font-size: 32px; letter-spacing: -2.5px; }
-  .site-description { padding-left: 15px; font-size: 11px; max-width: 90px; line-height: 1.4; }
   .prototype-badge { font-size: 9px; padding: 5px 7px; max-width: 98px; line-height: 1.4; }
   .rubrics-section { padding-top: 24px; }
-  .rubrics-hint { max-width: 140px; font-size: 10px; text-align: right; }
-  .category-nav { margin-block: 15px 12px; }
-  .category-button { font-size: 12px; padding: 9px 13px; }
   .category-hero { height: 400px; }
   .hero-heading { top: 81px; }
   .hero-heading h2 { font-size: 38px; }
