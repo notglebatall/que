@@ -33,7 +33,7 @@ export function NewsPage() {
         <span className="prototype-badge">Прототип интерфейса</span>
       </header>
 
-      <main className="page-width">
+      <main>
         <h1 className="sr-only">Новости</h1>
         <section className="rubrics-section" aria-label="Выбор рубрики">
           <CategorySelector
@@ -43,7 +43,7 @@ export function NewsPage() {
           />
         </section>
 
-        <section id="news-feed" className="news-section" aria-labelledby="feed-heading" tabIndex={-1}>
+        <section id="news-feed" className="news-section page-width" aria-labelledby="feed-heading" tabIndex={-1}>
           <div className="feed-header">
             <div aria-live="polite" aria-atomic="true">
               <p className="eyebrow">Новостная лента</p>
