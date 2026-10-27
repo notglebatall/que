@@ -12,5 +12,5 @@ interface CategorySelectorProps {
 }
 
 export function CategorySelector(props: CategorySelectorProps) {
-  return <HeroCarousel {...props} brand="Рубрики новостей" ariaLabel="Рубрики новостей" ariaControls="news-feed" />
+  return <HeroCarousel {...props} ariaLabel="Рубрики новостей" ariaControls="news-feed" />
 }
