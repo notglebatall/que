@@ -1,10 +1,9 @@
 "use client"
 
 // Adapted from the HeroCarousel supplied by the user via 21st:
-// measured filmstrip, shared top edge, expanded active card, changing backdrop.
+// measured filmstrip, shared top edge, expanded active card.
 import * as React from "react"
 import {
-  AnimatePresence,
   animate,
   motion,
   useMotionValue,
@@ -33,9 +32,6 @@ export interface HeroCarouselProps {
 const clamp = (n: number, min: number, max: number) =>
   Math.min(max, Math.max(min, n))
 
-const GRAIN =
-  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")"
-
 export function HeroCarousel({
   items,
   index: controlled,
@@ -56,7 +52,6 @@ export function HeroCarousel({
 
   const last = items.length - 1
   const index = clamp(controlled ?? uncontrolled, 0, Math.max(0, last))
-  const active = items[index]
 
   const go = React.useCallback((next: number) => {
     const nextIndex = clamp(next, 0, Math.max(0, last))
@@ -88,7 +83,6 @@ export function HeroCarousel({
   const spring = React.useMemo(() => reduced
     ? { duration: 0 }
     : { type: "spring" as const, stiffness: 260, damping: 34, mass: 0.9 }, [reduced])
-  const swing = { duration: reduced ? 0 : 0.55 }
 
   React.useEffect(() => {
     if (dragging) return
@@ -130,7 +124,7 @@ export function HeroCarousel({
     return () => window.clearTimeout(timer)
   }, [autoplay, autoplayDelay, dragging, go, index, items.length, last, paused, reduced])
 
-  if (!active) return null
+  if (!items.length) return null
 
   return (
     <div
@@ -159,36 +153,6 @@ export function HeroCarousel({
       }}
       className={cn("hero-carousel relative isolate w-full overflow-hidden select-none", className)}
     >
-      <AnimatePresence initial={false}>
-        <motion.div
-          key={active.id ?? index}
-          className="pointer-events-none absolute inset-0 -z-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={swing}
-          style={{ backgroundColor: active.accent ?? "#e2e5dc" }}
-        >
-          <motion.img
-            src={active.image}
-            alt=""
-            aria-hidden="true"
-            draggable={false}
-            className="absolute inset-0 h-full w-full object-cover opacity-35 saturate-50"
-            initial={{ scale: reduced ? 1 : 1.08 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: reduced ? 0 : 4, ease: "linear" }}
-          />
-          <div className="hero-wash absolute inset-0" />
-        </motion.div>
-      </AnimatePresence>
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.08] mix-blend-multiply"
-        style={{ backgroundImage: GRAIN, backgroundSize: "180px 180px" }}
-      />
-
       <div className="absolute inset-x-0" style={{ top: "50%", marginTop: -(fullH + 32) / 2, height: fullH + 32 }}>
         <motion.div
           className="flex items-start"
