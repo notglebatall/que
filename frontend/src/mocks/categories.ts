@@ -1,7 +1,7 @@
-import type { HeroCarouselItem } from "@/components/ui/hero-carousel"
+import type { CategoryItem } from "@/components/ui/category-selector"
 
 // Демонстрационные изображения рубрик. Это не новостные фотографии.
-export const categories: HeroCarouselItem[] = [
+export const categories: CategoryItem[] = [
   {
     id: "all",
     title: "Все новости",

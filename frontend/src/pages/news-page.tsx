@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
-import { HeroCarousel } from "@/components/ui/hero-carousel"
+import { CategorySelector } from "@/components/ui/category-selector"
 import { categories } from "@/mocks/categories"
 
 export function NewsPage() {
@@ -36,11 +36,10 @@ export function NewsPage() {
       <main className="page-width">
         <h1 className="sr-only">Новости</h1>
         <section className="rubrics-section" aria-label="Выбор рубрики">
-          <HeroCarousel
+          <CategorySelector
             items={categories}
             index={index}
             onIndexChange={setIndex}
-            className="category-hero"
           />
         </section>
 
