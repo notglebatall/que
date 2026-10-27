@@ -1,4 +1,10 @@
 # Byte-compiled / optimized / DLL files
+# Frontend
+node_modules/
+*.tsbuildinfo
+.env.*
+!.env.example
+
 __pycache__/
 *.py[codz]
 *$py.class
@@ -218,3 +224,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Keep frontend helpers despite the generic Python lib/ rule above.
+!frontend/src/lib/
+!frontend/src/lib/**
