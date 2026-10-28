@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { CategorySelector } from "@/components/ui/category-selector"
+import { GlassEffect } from "@/components/ui/liquid-glass"
 import { categories } from "@/mocks/categories"
 
 export function NewsPage() {
@@ -26,10 +27,10 @@ export function NewsPage() {
       </AnimatePresence>
       <a href="#news-feed" className="skip-link">Перейти к ленте новостей</a>
 
-      <header className="site-header page-width">
+      <GlassEffect as="header" className="site-header page-width" contentClassName="site-header-content">
         <a className="wordmark" href="/" aria-label="QUE — главная страница">QUE<span aria-hidden="true">.</span></a>
         <span className="prototype-badge">Прототип интерфейса</span>
-      </header>
+      </GlassEffect>
 
       <main>
         <h1 className="sr-only">Новости</h1>
@@ -42,8 +43,8 @@ export function NewsPage() {
         </section>
 
         <section id="news-feed" className="news-section page-width" aria-labelledby="feed-heading" tabIndex={-1}>
-          <div className="feed-header">
-            <div aria-live="polite" aria-atomic="true">
+          <GlassEffect className="feed-header" contentClassName="feed-header-content">
+            <div className="feed-heading-copy" aria-live="polite" aria-atomic="true">
               <p className="eyebrow">Новостная лента</p>
               <h2 id="feed-heading">{category.title}</h2>
               <p className="feed-description">{isAll ? "Материалы всех пяти рубрик" : category.credit}</p>
@@ -53,7 +54,7 @@ export function NewsPage() {
                 <span aria-hidden="true">↖</span> Все новости
               </button>
             )}
-          </div>
+          </GlassEffect>
 
           <div className="feed-placeholder">
             <div className="feed-placeholder-mark" aria-hidden="true">
